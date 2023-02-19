@@ -82,7 +82,7 @@ def printItems(items, shouldPrint= lambda x: true):
 	itemsToPrint = list(filter(shouldPrint, itemStringsWithId))
 
 	[saveStringToFile(item[1], getHtmlFilePath(item[0])) for item in itemsToPrint]
-	[convertToPdf(getHtmlFilePath(item[0]), 'tmp/pdf/' + str(item[0])) for item in itemsToPrint]
+	[convertToPdf(getHtmlFilePath(item[0]), 'tmp/pdf/' + str(item[0]) + '.pdf') for item in itemsToPrint]
 
 def main():
 	makeDirectories()
