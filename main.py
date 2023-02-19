@@ -2,7 +2,7 @@ import kanka
 import os
 import shutil
 import hashlib
-from pyhtml2pdf import converter
+import pdfkit
 
 def readTemplate(filename='template.html'):
 	with open(filename) as file:
@@ -21,8 +21,7 @@ def makeDirectories():
 	makeDirIfNotExist('data')
 
 def convertToPdf(src, dest):
-	path = os.path.abspath(src)
-	converter.convert(f'file:///{path}', dest + '.pdf')
+	pdfkit.from_file(src, dest)
 
 def cleanup():
 	shutil.rmtree('tmp')
