@@ -24,7 +24,7 @@ def convertToPdf(src, dest):
 	pdfkit.from_file(src, dest)
 
 def cleanup():
-	shutil.rmtree('tmp')
+	os.system('rm -r tmp/pdf')
 
 def descriptionLengthToSize(description):
 	length = len(description)
@@ -83,15 +83,14 @@ def printItems(items, shouldPrint= lambda x: true):
 
 	[saveStringToFile(item[1], getHtmlFilePath(item[0])) for item in itemsToPrint]
 	[convertToPdf(getHtmlFilePath(item[0]), 'tmp/pdf/' + str(item[0]) + '.pdf') for item in itemsToPrint]
-	os.system("lp tmp/pdf/*")
+	os.system("lp tmp/pdf/*.pdf")
 
 def main():
 	makeDirectories()
+	cleanup()
 
 	items = kanka.getCleanItemsForActiveMembers()
 	printItems(items, checkHash)
-
-	cleanup()
 
 if __name__ == '__main__':
 	main()
