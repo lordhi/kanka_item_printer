@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import kanka
 import os
 import shutil
