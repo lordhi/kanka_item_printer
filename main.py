@@ -86,8 +86,8 @@ def printItems(items, shouldPrint= lambda x: true):
 	os.system("lp tmp/pdf/*.pdf")
 
 def main():
-	makeDirectories()
 	cleanup()
+	makeDirectories()
 
 	items = kanka.getCleanItemsForActiveMembers()
 	printItems(items, checkHash)
